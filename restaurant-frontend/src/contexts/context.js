@@ -6,10 +6,18 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   // State
   const [restaurants, setRestaurants] = useState(restaurantPlaces);
-  console.log("in context", restaurants);
+  const [newRestaurant, setNewRestaurant] = useState({
+    name: "",
+    description: "",
+    address: "",
+  });
+
+  // Handlers
 
   return (
-    <AppContext.Provider value={{ restaurants }}>
+    <AppContext.Provider
+      value={{ restaurants, setRestaurants, newRestaurant, setNewRestaurant }}
+    >
       {children}
     </AppContext.Provider>
   );

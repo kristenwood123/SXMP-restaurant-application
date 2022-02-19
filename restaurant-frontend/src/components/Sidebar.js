@@ -14,7 +14,8 @@ const Sidebar = () => {
         <Card.Body>
           <Card.Text>
             Welcome to my restaurant application. Come here to search your
-            favorite restaurants or add ones to the list.
+            favorite restaurants & food trucks or add your favorites to the
+            list.
           </Card.Text>
           <Button variant="primary" onClick={() => setShow(true)}>
             Add a restaurant

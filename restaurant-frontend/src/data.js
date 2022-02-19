@@ -5,17 +5,17 @@ function foodPlaces() {
     {
       name: "Philz Coffee Truck",
       description: "Hot coffee: iced coffee: hot chocolate: tea: pastries",
-      address: "735 MONTGOMERY ST",
+      address: "735 Montgomery St",
     },
     {
       name: "Philz Coffee Truck 2!!",
       description: "Hot coffee: iced coffee: hot chocolate: tea: pastries",
-      address: "735 MONTGOMERY ST",
+      address: "735 Montgomery St",
     },
     {
       name: "Philz Coffee Truck 3!!",
       description: "Hot coffee: iced coffee: hot chocolate: tea: pastries",
-      address: "735 MONTGOMERY ST",
+      address: "735 Montgomery St",
     },
   ];
 }

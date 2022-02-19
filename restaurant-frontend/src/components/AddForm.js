@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useGlobalContext } from "../contexts/context";
 
 export const AddForm = () => {
-  const [newRestaurant, setNewRestaurant] = useState({
-    name: "",
-    description: "",
-    address: "",
-  });
+  const { newRestaurant, setNewRestaurant, setRestaurants } =
+    useGlobalContext();
   const { name, description, address } = newRestaurant;
 
   const handleInputChange = (e) => {
@@ -29,14 +27,13 @@ export const AddForm = () => {
       });
   };
 
-  // useEffect(() => {
-  //   fetch("http://localhost:8080/restaurant/getAllRestaurants")
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       setRestaurants(result);
-  //     });
-  // }, []);
-
+  useEffect(() => {
+    fetch("http://localhost:8080/restaurant/getAllRestaurants")
+      .then((res) => res.json())
+      .then((result) => {
+        setRestaurants(result);
+      });
+  }, []);
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
