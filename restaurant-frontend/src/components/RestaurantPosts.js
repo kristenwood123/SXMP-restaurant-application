@@ -7,25 +7,33 @@ import {
   Button,
   ButtonGroup,
 } from "react-bootstrap";
+import { useGlobalContext } from "../contexts/context";
 
 const RestaurantPosts = () => {
+  const { restaurants } = useGlobalContext();
+  console.log("tyyype", typeof restaurants.restaurants);
   return (
     <React.Fragment>
       <Container fluid="md">
         <Row className="justify-content-md-center">
           <Col>
             <Card>
-              <Card.Header>
-                Hot coffee: iced coffee: hot chocolate: tea: pastries
-              </Card.Header>
-              <Card.Body>
-                <Card.Title>Philz Coffee Truck</Card.Title>
-                <Card.Text>735 MONTGOMERY ST</Card.Text>
-                <ButtonGroup>
-                  <Button variant="primary">View</Button>
-                  <Button variant="primary">Edit</Button>
-                </ButtonGroup>
-              </Card.Body>
+              {restaurants.map((restaurant) => {
+                const { name, address, description } = restaurant;
+                return (
+                  <>
+                    <Card.Header>{description}</Card.Header>
+                    <Card.Body>
+                      <Card.Title>{name}</Card.Title>
+                      <Card.Text>{address}</Card.Text>
+                      <ButtonGroup>
+                        <Button variant="primary">View</Button>
+                        <Button variant="primary">Edit</Button>
+                      </ButtonGroup>
+                    </Card.Body>
+                  </>
+                );
+              })}
             </Card>
           </Col>
         </Row>
