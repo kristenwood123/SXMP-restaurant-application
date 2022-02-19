@@ -6,9 +6,7 @@ import {
   Card,
   Button,
   ButtonGroup,
-  Modal,
 } from "react-bootstrap";
-import AddForm from "./AddForm";
 
 const RestaurantPosts = () => {
   return (
@@ -32,21 +30,6 @@ const RestaurantPosts = () => {
           </Col>
         </Row>
       </Container>
-
-      <Modal>
-        <Modal.Header closeButton>
-          <Modal.Title>Add Restaurant</Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body>
-          <AddForm />
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="secondary">Close</Button>
-          <Button variant="primary">Save changes</Button>
-        </Modal.Footer>
-      </Modal>
     </React.Fragment>
   );
 };

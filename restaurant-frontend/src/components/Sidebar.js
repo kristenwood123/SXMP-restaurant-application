@@ -6,7 +6,7 @@ import AddForm from "./AddForm";
 const Sidebar = () => {
   const [show, setShow] = useState(false);
   // const handleShowModal = () => setShow(true);
-  // const handleCloseModal = () => setShow(false);
+  const handleCloseModal = () => setShow(false);
 
   return (
     <>
@@ -22,11 +22,11 @@ const Sidebar = () => {
           </Button>
         </Card.Body>
       </Card>
-      <Modal show={show}>
-        <Modal.Header closeButton>
+
+      <Modal show={show} onHide={handleCloseModal}>
+        <Modal.Header>
           <Modal.Title>Add Restaurant</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
           <AddForm />
         </Modal.Body>
@@ -35,7 +35,6 @@ const Sidebar = () => {
           <Button variant="secondary" onClick={() => setShow(false)}>
             Close
           </Button>
-          <Button variant="primary">Save changes</Button>
         </Modal.Footer>
       </Modal>
     </>

@@ -5,28 +5,29 @@ export const AddForm = () => {
   return (
     <Form>
       <Form.Group className="mb-3">
-        <Form.Label>Restaurant name</Form.Label>
-        <Form.Control type="text" placeholder="Enter restaurant name" />
+        <Form.Control type="text" placeholder="Name *" required />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Description</Form.Label>
-        <Form.Control type="password" placeholder="Description" />
+      <Form.Group className="mb-3">
+        <Form.Control type="text" placeholder="Description *" required />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Address</Form.Label>
-        <Form.Control type="password" placeholder="Address" />
+      <Form.Group className="mb-3">
+        <Form.Control
+          as="textarea"
+          placeholder="Address *"
+          rows={3}
+          name="address"
+          required
+        />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>City</Form.Label>
-        <Form.Control type="password" placeholder="City" />
+      <Form.Group className="mb-3">
+        <Form.Control type="city" placeholder="City" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Zip code</Form.Label>
-        <Form.Control type="password" placeholder="Zip code" />
+      <Form.Group className="mb-3">
+        <Form.Control type="text" placeholder="Zip code" />
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
+      <Button variant="primary" type="submit" block>
+        Add New Restaurant
       </Button>
     </Form>
   );
