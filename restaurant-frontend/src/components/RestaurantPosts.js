@@ -1,14 +1,8 @@
 import React from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Button,
-  ButtonGroup,
-} from "react-bootstrap";
+import { Container, Row, Col, Card, Button, Stack } from "react-bootstrap";
 import styles from "styled-components";
 import { useGlobalContext } from "../contexts/context";
+import { FiThumbsUp, FiThumbsDown } from "react-icons/fi";
 
 const RestaurantPosts = () => {
   const { restaurants } = useGlobalContext();
@@ -19,43 +13,52 @@ const RestaurantPosts = () => {
         <Row className="justify-content-md-center">
           <Col>
             {restaurants.map((restaurant) => {
-              const { name, address, description } = restaurant;
+              const { name, address, description, likes } = restaurant;
               return (
-                <div style={{ marginBottom: "2rem" }}>
+                <section style={{ marginBottom: "2rem" }}>
                   <Card>
-                    <CardHeader>
-                      Food Types:{" "}
-                      <span
-                        style={{
-                          color: "gray",
-                          fontWeight: "normal",
-                        }}
-                      >
-                        {description}
-                      </span>
-                      <hr></hr>
-                    </CardHeader>
-                    <Card.Body>
-                      <Card.Title
-                        style={{
-                          fontSize: 30,
-                          fontWeight: "bold",
-                          marginTop: 0,
-                        }}
-                      >
-                        {name}
-                      </Card.Title>
-                      <Card.Text style={{ color: "gray" }}>{address}</Card.Text>
-                      <hr></hr>
-                      <ButtonGroup>
-                        <Button variant="primary" className="mr-1">
-                          View
-                        </Button>
-                        <Button variant="primary">Edit</Button>
-                      </ButtonGroup>
-                    </Card.Body>
+                    <LikeContainer>
+                      <FiThumbsUp />
+                      {likes}
+                      <FiThumbsDown />
+                    </LikeContainer>
+                    <CardWrapper>
+                      <CardHeader>
+                        Food Types:{" "}
+                        <span
+                          style={{
+                            color: "gray",
+                            fontWeight: "normal",
+                          }}
+                        >
+                          {description}
+                        </span>
+                        <hr></hr>
+                      </CardHeader>
+                      <Card.Body>
+                        <Card.Title
+                          style={{
+                            fontSize: 30,
+                            fontWeight: "bold",
+                            marginTop: 0,
+                          }}
+                        >
+                          {name}
+                        </Card.Title>
+                        <Card.Text style={{ color: "gray" }}>
+                          {address}
+                        </Card.Text>
+                        <hr></hr>
+                        <Stack direction="horizontal" gap={3}>
+                          <Button variant="outline-primary">Edit</Button>
+                          <Button variant="primary" className="btn-block">
+                            View
+                          </Button>
+                        </Stack>
+                      </Card.Body>
+                    </CardWrapper>
                   </Card>
-                </div>
+                </section>
               );
             })}
           </Col>
@@ -72,6 +75,20 @@ margin-bottom: -1rem;
 border: none;
 font-size: 14px;
 font-weight: bold;
+`;
+
+const LikeContainer = styles.div`
+position: absolute;
+display: flex;
+flex-direction: column;
+margin: 1rem;
+margin-right: 2rem;
+top: 50px;
+font-size: 30px;
+`;
+
+const CardWrapper = styles.div`
+margin-left: 5rem;
 `;
 
 export default RestaurantPosts;
