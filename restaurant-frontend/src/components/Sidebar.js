@@ -1,19 +1,44 @@
-import React from "react";
-import { Card, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Button, Modal } from "react-bootstrap";
+import restaurantImg from "../images/restaurantimage.jpg";
+import AddForm from "./AddForm";
 
 const Sidebar = () => {
+  const [show, setShow] = useState(false);
+  // const handleShowModal = () => setShow(true);
+  // const handleCloseModal = () => setShow(false);
+
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <>
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" src={restaurantImg} />
+        <Card.Body>
+          <Card.Text>
+            Welcome to my restaurant application. Come here to search your
+            favorite restaurants or add ones to the list.
+          </Card.Text>
+          <Button variant="primary" onClick={() => setShow(true)}>
+            Add a restaurant
+          </Button>
+        </Card.Body>
+      </Card>
+      <Modal show={show}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Restaurant</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <AddForm />
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShow(false)}>
+            Close
+          </Button>
+          <Button variant="primary">Save changes</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 
