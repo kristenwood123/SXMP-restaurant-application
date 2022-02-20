@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <Card style={{ width: "18rem", maxHeight: "400px" }}>
+      <Card style={{ width: "18rem", maxHeight: "450px" }}>
         <Card.Img variant="top" src={restaurantImg} />
         <Card.Body>
           <Card.Text>

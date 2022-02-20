@@ -83,7 +83,7 @@ display: flex;
 flex-direction: column;
 margin: 1rem;
 margin-right: 2rem;
-top: 50px;
+top: 45px;
 font-size: 30px;
 `;
 

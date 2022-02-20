@@ -1,7 +1,7 @@
 package com.kristenwoodward.service;
 
 
-import com.kristenwoodward.model.Restaurant;
+import com.kristenwoodward.model.persistence.Restaurant;
 
 import java.util.List;
 

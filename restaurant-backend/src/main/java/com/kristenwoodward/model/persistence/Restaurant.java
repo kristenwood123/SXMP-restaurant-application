@@ -1,17 +1,26 @@
-package com.kristenwoodward.model;
+package com.kristenwoodward.model.persistence;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "restaurant")
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty
+
+    @Column
     private Long id;
+
+    @Column(nullable = false, unique = true)
     private String name;
+
+    @Column
     private String description;
+
+    @Column
     private String address;
 
     public Restaurant() {
