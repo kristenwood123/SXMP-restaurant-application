@@ -23,11 +23,12 @@ public class RestaurantController {
     @PostMapping("/add")
     public String and (@RequestBody RestaurantRequest restaurantRequest){
         Restaurant restaurant = new Restaurant();
-        restaurant.setAddress(restaurantRequest.getAddress());
         restaurant.setName(restaurantRequest.getName());
-        restaurant.setDescription(restaurantRequest.getDescription());
+        restaurant.setLocationDescription(restaurantRequest.getLocationDescription());
+        restaurant.setAddress(restaurantRequest.getAddress());
+        restaurant.setFoodItems(restaurantRequest.getFoodItems());
         restaurantRepository.save(restaurant);
-//        restaurantService.saveRestaurant(restaurant);
+        restaurantService.saveRestaurant(restaurant);
         return "Restaurant is added";
     }
 
@@ -35,4 +36,5 @@ public class RestaurantController {
     public List<Restaurant> getAllRestaurants() {
         return restaurantService.getAllRestaurants();
     }
+
 }
