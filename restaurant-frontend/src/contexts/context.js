@@ -1,26 +1,33 @@
-import React, { useContext, useState } from "react";
-// import restaurantPlaces from "../data";
+import React, { useContext, useEffect, useState } from "react";
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  fetch("http://localhost:8080/restaurant/getAllRestaurants")
-    .then((res) => res.json())
-    .then((result) => {
-      setRestaurants(result);
-    }, []);
-
   // State
   const [restaurants, setRestaurants] = useState([]);
+
   const [newRestaurant, setNewRestaurant] = useState({
     name: "",
     description: "",
     address: "",
   });
 
+  useEffect(() => {
+    fetch("http://localhost:8080/restaurant/getRestaurants?num=1")
+      .then((res) => res.json())
+      .then((result) => {
+        setRestaurants(result);
+      });
+  }, []);
+
   return (
     <AppContext.Provider
-      value={{ restaurants, setRestaurants, newRestaurant, setNewRestaurant }}
+      value={{
+        restaurants,
+        setRestaurants,
+        newRestaurant,
+        setNewRestaurant,
+      }}
     >
       {children}
     </AppContext.Provider>

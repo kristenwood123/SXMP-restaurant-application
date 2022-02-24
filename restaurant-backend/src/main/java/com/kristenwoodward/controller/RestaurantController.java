@@ -37,4 +37,10 @@ public class RestaurantController {
         return restaurantService.getAllRestaurants();
     }
 
+    @GetMapping(value = "/getRestaurants", params = {"num"})
+    public List<Restaurant> getRestaurants(@RequestParam("num") int num) {
+        restaurantService.getAllRestaurants();
+        return restaurantService.getRestaurantsByPage(num);
+    }
+
 }

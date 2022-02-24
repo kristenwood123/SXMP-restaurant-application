@@ -27,13 +27,6 @@ export const AddForm = () => {
       });
   };
 
-  useEffect(() => {
-    fetch("http://localhost:8080/restaurant/getAllRestaurants")
-      .then((res) => res.json())
-      .then((result) => {
-        setRestaurants(result);
-      });
-  }, []);
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">

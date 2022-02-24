@@ -8,4 +8,7 @@ import java.util.List;
 public interface RestaurantService {
   Restaurant saveRestaurant(Restaurant restaurant);
   public List<Restaurant> getAllRestaurants();
+
+  public List<Restaurant> getRestaurantsByPage(int page);
+
 }

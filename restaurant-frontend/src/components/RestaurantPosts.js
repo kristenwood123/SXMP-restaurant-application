@@ -6,7 +6,7 @@ import { FiThumbsUp, FiThumbsDown } from "react-icons/fi";
 
 const RestaurantPosts = () => {
   const { restaurants } = useGlobalContext();
-
+  console.log("asdasd", restaurants);
   return (
     <React.Fragment>
       <Container fluid="md">
@@ -15,50 +15,52 @@ const RestaurantPosts = () => {
             {restaurants.map((restaurant) => {
               const { name, address, description, likes } = restaurant;
               return (
-                <section style={{ marginBottom: "2rem" }}>
-                  <Card>
-                    <LikeContainer>
-                      <FiThumbsUp />
-                      {likes}
-                      <FiThumbsDown />
-                    </LikeContainer>
-                    <CardWrapper>
-                      <CardHeader>
-                        Food Types:{" "}
-                        <span
-                          style={{
-                            color: "gray",
-                            fontWeight: "normal",
-                          }}
-                        >
-                          {description}
-                        </span>
-                        <hr></hr>
-                      </CardHeader>
-                      <Card.Body>
-                        <Card.Title
-                          style={{
-                            fontSize: 30,
-                            fontWeight: "bold",
-                            marginTop: 0,
-                          }}
-                        >
-                          {name}
-                        </Card.Title>
-                        <Card.Text style={{ color: "gray" }}>
-                          {address}
-                        </Card.Text>
-                        <hr></hr>
-                        <Stack direction="horizontal" gap={3}>
-                          <Button variant="outline-primary">Edit</Button>
-                          <Button variant="primary" className="btn-block">
-                            View
-                          </Button>
-                        </Stack>
-                      </Card.Body>
-                    </CardWrapper>
-                  </Card>
-                </section>
+                <>
+                  <section style={{ marginBottom: "2rem" }}>
+                    <Card>
+                      <LikeContainer>
+                        <FiThumbsUp />
+                        {likes}
+                        <FiThumbsDown />
+                      </LikeContainer>
+                      <CardWrapper>
+                        <CardHeader>
+                          Food Types:{" "}
+                          <span
+                            style={{
+                              color: "gray",
+                              fontWeight: "normal",
+                            }}
+                          >
+                            {description}
+                          </span>
+                          <hr></hr>
+                        </CardHeader>
+                        <Card.Body>
+                          <Card.Title
+                            style={{
+                              fontSize: 30,
+                              fontWeight: "bold",
+                              marginTop: 0,
+                            }}
+                          >
+                            {name}
+                          </Card.Title>
+                          <Card.Text style={{ color: "gray" }}>
+                            {address}
+                          </Card.Text>
+                          <hr></hr>
+                          <Stack direction="horizontal" gap={3}>
+                            <Button variant="outline-primary">Edit</Button>
+                            <Button variant="primary" className="btn-block">
+                              View
+                            </Button>
+                          </Stack>
+                        </Card.Body>
+                      </CardWrapper>
+                    </Card>
+                  </section>
+                </>
               );
             })}
           </Col>
