@@ -1,28 +1,15 @@
 import React from "react";
 import RestaurantPosts from "./RestaurantPosts";
 import styles from "styled-components";
-import Table from "./Table";
-import Sidebar from "./Sidebar";
 
 const HomeComponent = () => {
   return (
-    <>
-      <HomeContainer>
-        <RestaurantPosts />
-        <Sidebar />
-      </HomeContainer>
-    </>
+    <Container>
+      <RestaurantPosts />
+    </Container>
   );
 };
 
 export default HomeComponent;
-
-const HomeContainer = styles.div`
-  background: white;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  margin:0;
-  left:0;
-  padding: 2rem 2rem 5rem 2rem;
-`;
+const Container = styles.section`
+width: 100%;`;

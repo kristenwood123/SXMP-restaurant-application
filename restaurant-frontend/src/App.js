@@ -4,10 +4,10 @@ import NavbarComponent from "./components/Navbar";
 
 function App() {
   return (
-    <React.Fragment>
+    <>
       <NavbarComponent />
       <HomeComponent />
-    </React.Fragment>
+    </>
   );
 }
 
