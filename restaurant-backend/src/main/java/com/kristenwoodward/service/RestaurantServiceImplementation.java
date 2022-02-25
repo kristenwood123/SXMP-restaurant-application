@@ -19,6 +19,8 @@ public class RestaurantServiceImplementation implements RestaurantService {
 
     @Override
     public Restaurant saveRestaurant(Restaurant restaurant) {
+
+//        restaurantRepository.save(restaurant);
         return restaurantRepository.save(restaurant);
     }
 
@@ -29,15 +31,16 @@ public class RestaurantServiceImplementation implements RestaurantService {
         }
         this.allRestaurants = restaurantRepository.findAll();
         return this.allRestaurants;
+
     }
+
+    @Override
+    public List<Restaurant> getRestaurantsByPage(int page) {
+        List<Restaurant> result = new ArrayList<>();
+        for (int i = (page - 1) * 10; i < allRestaurants.size() && i < page * 10; i++) {
+            result.add(allRestaurants.get(i));
+        }
+        return result;
+    }
+
 }
-//    @Override
-//    public List<Restaurant> getRestaurantsByPage(int page) {
-//        List<Restaurant> result = new ArrayList<>();
-//        for(int i=(page-1)*10; i<allRestaurants.size() && i<page*10; i++) {
-//            result.add(allRestaurants.get(i));
-//        }
-//        return result;
-//    }
-
-

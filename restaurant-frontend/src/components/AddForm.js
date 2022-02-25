@@ -13,7 +13,7 @@ export const AddForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setNewRestaurant({ ...newRestaurant, name, description, address });
-    fetch("http://localhost:8080/restaurant/add", {
+    fetch("http://localhost:8080/restaurants/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newRestaurant),

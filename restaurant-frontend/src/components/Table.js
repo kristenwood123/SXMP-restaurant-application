@@ -2,6 +2,8 @@ import React from "react";
 import MaterialTable from "material-table";
 import { useGlobalContext } from "../contexts/context";
 
+import axios from "axios";
+
 const Table = () => {
   const { restaurants, setRestaurants } = useGlobalContext();
   const columns = [
@@ -22,11 +24,20 @@ const Table = () => {
           actionsColumnIndex: -1,
         }}
         editable={{
-          onRowAdd: (newRow) =>
-            new Promise((resolve, reject) => {
-              setRestaurants([...restaurants, newRow]);
-              resolve();
-            }),
+          onRowAdd: (newRow) => {
+            console.log("dnew row", newRow);
+
+            axios
+              .post("http://localhost:8080/restaurants/add", newRow)
+              .then((res) => {
+                console.log("dnew row", newRow);
+                // if success, then add to frontend
+                new Promise((resolve, reject) => {
+                  setRestaurants([...restaurants, newRow]);
+                  resolve();
+                });
+              });
+          },
         }}
       />
     </div>

@@ -13,12 +13,11 @@ const AppProvider = ({ children }) => {
     description: "",
     address: "",
   });
-
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
       const result = await axios.get(
-        `http://localhost:8080/restaurants/getAllRestaurants`
+        `http://localhost:8080/restaurants/getRestaurants?num=${currentPage}`
       );
       setRestaurants(result.data);
       setLoading(false);

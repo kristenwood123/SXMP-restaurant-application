@@ -27,7 +27,17 @@ public class RestaurantController {
         restaurant.setLocationDescription(restaurantRequest.getLocationDescription());
         restaurant.setAddress(restaurantRequest.getAddress());
         restaurant.setFoodItems(restaurantRequest.getFoodItems());
-        restaurantRepository.save(restaurant);
+
+        restaurant.setLatitude("123");
+        restaurant.setLongitude("34");
+        restaurant.setSchedule("sdfasdf");
+        restaurant.setLocation("herere");
+        restaurant.setId(Long.valueOf(12345));
+
+//        restaurantRepository.save(restaurant);
+
+//        restaurant.setName("TEST");
+//        restaurant.set
         restaurantService.saveRestaurant(restaurant);
         return "Restaurant is added";
     }
@@ -37,10 +47,10 @@ public class RestaurantController {
         return restaurantService.getAllRestaurants();
     }
 
-//    @GetMapping(value = "/getRestaurants", params = {"num"})
-//    public List<Restaurant> getRestaurants(@RequestParam("num") int num) {
-//        restaurantService.getAllRestaurants();
-//        return restaurantService.getRestaurantsByPage(num);
-//    }
+    @GetMapping(value = "/getRestaurants", params = {"num"})
+    public List<Restaurant> getRestaurants(@RequestParam("num") int num) {
+        restaurantService.getAllRestaurants();
+        return restaurantService.getRestaurantsByPage(num);
+    }
 }
 
