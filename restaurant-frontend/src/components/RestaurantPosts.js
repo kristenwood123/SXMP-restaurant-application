@@ -4,18 +4,21 @@ import Table from "./Table";
 import styles from "styled-components";
 import { FiThumbsUp, FiThumbsDown } from "react-icons/fi";
 import { useGlobalContext } from "../contexts/context";
+import Pagination from "./Pagination";
 
 const RestaurantPosts = () => {
   const { restaurants } = useGlobalContext();
-  console.log("restaurants", restaurants);
+
   return (
     <Container fluid="md">
       <Row className="justify-content-md-center">
+        {/* <Table /> */}
         <Col>
           {restaurants.map((restaurant) => {
             const { name, address, description, likes } = restaurant;
             return (
               <>
+                <Button>Sort</Button>
                 <section style={{ marginBottom: "2rem" }}>
                   <Card>
                     <LikeContainer>
@@ -65,7 +68,8 @@ const RestaurantPosts = () => {
           })}
         </Col>
       </Row>
-      {/* <Table /> */}
+
+      <Pagination />
     </Container>
   );
 };

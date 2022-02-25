@@ -1,12 +1,15 @@
 import React from "react";
 import RestaurantPosts from "./RestaurantPosts";
 import styles from "styled-components";
+import Table from "./Table";
+import Sidebar from "./Sidebar";
 
 const HomeComponent = () => {
   return (
     <>
       <HomeContainer>
         <RestaurantPosts />
+        <Sidebar />
       </HomeContainer>
     </>
   );

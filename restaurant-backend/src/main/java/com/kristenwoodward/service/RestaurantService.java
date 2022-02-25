@@ -8,4 +8,5 @@ public interface RestaurantService {
 
   public List<Restaurant> getRestaurantsByPage(int page);
 
+  List<Restaurant> getSortedRestaurants(int page, boolean order, String type);
 }

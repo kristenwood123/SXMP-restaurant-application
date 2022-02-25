@@ -34,10 +34,6 @@ public class RestaurantController {
         restaurant.setLocation("herere");
         restaurant.setId(Long.valueOf(12345));
 
-//        restaurantRepository.save(restaurant);
-
-//        restaurant.setName("TEST");
-//        restaurant.set
         restaurantService.saveRestaurant(restaurant);
         return "Restaurant is added";
     }
@@ -52,5 +48,15 @@ public class RestaurantController {
         restaurantService.getAllRestaurants();
         return restaurantService.getRestaurantsByPage(num);
     }
+
+    @GetMapping(value = "/sort", params = {"page", "order", "type"})
+    public List<Restaurant> getSortedRestaurants(@RequestParam("page") int page,
+                                                 @RequestParam("order") boolean order,
+                                                 @RequestParam("type") String type) {
+        restaurantService.getAllRestaurants();
+        return restaurantService.getSortedRestaurants(page, order, type);
+    }
+
+
 }
 
