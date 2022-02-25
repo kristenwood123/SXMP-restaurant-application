@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container, Form, Button, FormControl } from "react-bootstrap";
+import { Navbar, Container, Form, FormControl } from "react-bootstrap";
 
 const NavbarComponent = () => {
   return (
@@ -13,7 +13,6 @@ const NavbarComponent = () => {
             className="me-2"
             aria-label="Search"
           />
-          <Button variant="outline-primary">Search</Button>
         </Form>
       </Container>
     </Navbar>

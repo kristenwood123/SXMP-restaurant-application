@@ -10,7 +10,7 @@ public class Restaurant {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty
 
-    @Column(name = "restaurant_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name= "name", nullable = false, unique = true)
@@ -22,7 +22,7 @@ public class Restaurant {
     @Column
     private String Address;
 
-    @Column
+    @Column(name="food_items")
     private String FoodItems;
 
     @Column

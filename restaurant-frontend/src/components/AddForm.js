@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useGlobalContext } from "../contexts/context";
 
 export const AddForm = () => {
-  const { newRestaurant, setNewRestaurant, setRestaurants } =
-    useGlobalContext();
+  const { newRestaurant, setNewRestaurant } = useGlobalContext();
   const { name, description, address } = newRestaurant;
 
   const handleInputChange = (e) => {

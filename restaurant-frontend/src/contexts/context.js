@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   // State
   const [restaurants, setRestaurants] = useState([]);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
   const [newRestaurant, setNewRestaurant] = useState({
     name: "",
     description: "",
@@ -13,12 +15,16 @@ const AppProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    fetch("http://localhost:8080/restaurant/getRestaurants?num=1")
-      .then((res) => res.json())
-      .then((result) => {
-        setRestaurants(result);
-      });
-  }, []);
+    const fetchPosts = async () => {
+      setLoading(true);
+      const result = await axios.get(
+        `http://localhost:8080/restaurants/getAllRestaurants`
+      );
+      setRestaurants(result.data);
+      setLoading(false);
+    };
+    fetchPosts();
+  }, [currentPage]);
 
   return (
     <AppContext.Provider
@@ -27,6 +33,8 @@ const AppProvider = ({ children }) => {
         setRestaurants,
         newRestaurant,
         setNewRestaurant,
+        currentPage,
+        setCurrentPage,
       }}
     >
       {children}

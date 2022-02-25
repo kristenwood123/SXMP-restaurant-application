@@ -1,6 +1,5 @@
 import React from "react";
 import RestaurantPosts from "./RestaurantPosts";
-import Sidebar from "./Sidebar";
 import styles from "styled-components";
 
 const HomeComponent = () => {
@@ -8,7 +7,6 @@ const HomeComponent = () => {
     <>
       <HomeContainer>
         <RestaurantPosts />
-        <Sidebar />
       </HomeContainer>
     </>
   );

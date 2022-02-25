@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/restaurant")
+@RequestMapping("/restaurants")
 @CrossOrigin
 
 public class RestaurantController {
@@ -21,7 +21,7 @@ public class RestaurantController {
     private RestaurantRepository restaurantRepository;
 
     @PostMapping("/add")
-    public String and (@RequestBody RestaurantRequest restaurantRequest){
+    public String and(@RequestBody RestaurantRequest restaurantRequest) {
         Restaurant restaurant = new Restaurant();
         restaurant.setName(restaurantRequest.getName());
         restaurant.setLocationDescription(restaurantRequest.getLocationDescription());
@@ -37,10 +37,10 @@ public class RestaurantController {
         return restaurantService.getAllRestaurants();
     }
 
-    @GetMapping(value = "/getRestaurants", params = {"num"})
-    public List<Restaurant> getRestaurants(@RequestParam("num") int num) {
-        restaurantService.getAllRestaurants();
-        return restaurantService.getRestaurantsByPage(num);
-    }
-
+//    @GetMapping(value = "/getRestaurants", params = {"num"})
+//    public List<Restaurant> getRestaurants(@RequestParam("num") int num) {
+//        restaurantService.getAllRestaurants();
+//        return restaurantService.getRestaurantsByPage(num);
+//    }
 }
+
