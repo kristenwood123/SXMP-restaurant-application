@@ -1,10 +1,12 @@
 import React from "react";
 import RestaurantPosts from "./RestaurantPosts";
+import Hero from "./Hero";
 import styles from "styled-components";
 
 const HomeComponent = () => {
   return (
     <Container>
+      <Hero />
       <RestaurantPosts />
     </Container>
   );

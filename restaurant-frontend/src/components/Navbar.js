@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Container, Form, FormControl } from "react-bootstrap";
+import { BsSearch } from "react-icons/bs";
 
 const NavbarComponent = () => {
   return (
@@ -12,7 +13,9 @@ const NavbarComponent = () => {
             placeholder="Search"
             className="me-2"
             aria-label="Search"
-          />
+          >
+            {/* <BsSearch></BsSearch> */}
+          </FormControl>
         </Form>
       </Container>
     </Navbar>

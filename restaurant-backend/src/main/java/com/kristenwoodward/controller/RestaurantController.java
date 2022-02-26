@@ -23,16 +23,15 @@ public class RestaurantController {
     @PostMapping("/add")
     public String and(@RequestBody RestaurantRequest restaurantRequest) {
         Restaurant restaurant = new Restaurant();
+        restaurant.setId(restaurantRequest.getId());
         restaurant.setName(restaurantRequest.getName());
         restaurant.setLocationDescription(restaurantRequest.getLocationDescription());
         restaurant.setAddress(restaurantRequest.getAddress());
         restaurant.setFoodItems(restaurantRequest.getFoodItems());
-
-        restaurant.setLatitude("123");
-        restaurant.setLongitude("34");
-        restaurant.setSchedule("sdfasdf");
-        restaurant.setLocation("herere");
-        restaurant.setId(Long.valueOf(12345));
+        restaurant.setLatitude(restaurantRequest.getLatitude());
+        restaurant.setLongitude(restaurantRequest.getLongitude());
+        restaurant.setSchedule(restaurantRequest.getSchedule());
+        restaurant.setLocation(restaurantRequest.getLocation());
 
         restaurantService.saveRestaurant(restaurant);
         return "Restaurant is added";

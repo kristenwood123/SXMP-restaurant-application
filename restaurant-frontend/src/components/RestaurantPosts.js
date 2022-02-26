@@ -20,25 +20,43 @@ const RestaurantPosts = () => {
         {restaurants.map((restaurant) => {
           const { id, name, address, description } = restaurant;
           return (
-            <div style={{ display: "flex" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Grid container key={id}>
-                <Grid item xs={3} spacing={3}>
+                <Grid item xs={3}>
                   <Card
                     elevation={3}
                     sx={{ width: 200, height: 200, margin: "10px" }}
                   >
                     <CardHeader
+                      variant="h6"
+                      subheader={description}
+                      title={
+                        <Typography
+                          gutterBottom
+                          variant="body1"
+                          component="h2"
+                          align="center"
+                        >
+                          {name}
+                        </Typography>
+                      }
+                    />
+
+                    <CardContent
                       action={
                         <IconButton>
-                          <FaRegHeart></FaRegHeart>
+                          <FaRegHeart color="red" fillColor="red"></FaRegHeart>
                         </IconButton>
                       }
-                      title={name}
-                      subheader={description}
-                    />
-                    <CardContent>
+                    >
                       <Typography variant="body2" color="textSecondary">
-                        {address.toLowerCase()}
+                        {address}
                       </Typography>
                     </CardContent>
                   </Card>
