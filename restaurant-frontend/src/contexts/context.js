@@ -12,6 +12,8 @@ const AppProvider = ({ children }) => {
     name: "",
     description: "",
     address: "",
+    food_type: "",
+    likes: false,
   });
   useEffect(() => {
     const fetchPosts = async () => {

@@ -8,14 +8,14 @@ const NavbarComponent = () => {
       <Container>
         <Navbar.Brand href="#">Restaurant & Food Truck App</Navbar.Brand>
         <Form className="d-flex">
-          <FormControl
+          {/* <FormControl
             type="search"
             placeholder="Search"
             className="me-2"
             aria-label="Search"
           >
-            {/* <BsSearch></BsSearch> */}
-          </FormControl>
+            
+          </FormControl> */}
         </Form>
       </Container>
     </Navbar>
