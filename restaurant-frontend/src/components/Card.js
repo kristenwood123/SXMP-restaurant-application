@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, Row } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { FaRegHeart } from "react-icons/fa";
 
 const RestCard = ({ restaurant }) => {

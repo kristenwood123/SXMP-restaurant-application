@@ -7,9 +7,7 @@ const NavbarComponent = () => {
       <Container>
         <Navbar.Brand href="#">Restaurant & Food Truck App</Navbar.Brand>
         <Form className="d-flex">
-          <RiAddFill
-            styles={{ fill: "red", fontSize: "1rem", background: "red" }}
-          />
+          <RiAddFill className="icon-add" />
         </Form>
       </Container>
     </Navbar>

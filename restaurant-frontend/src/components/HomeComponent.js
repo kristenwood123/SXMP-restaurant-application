@@ -3,11 +3,13 @@ import RestaurantPosts from "./RestaurantPosts";
 import Hero from "./Hero";
 import styles from "styled-components";
 import Pagination from "./Pagination";
+import SortButton from "./SortButton";
 
 const HomeComponent = () => {
   return (
     <Container>
       <Hero />
+      <SortButton />
       <RestaurantPosts />
       <Pagination />
     </Container>
