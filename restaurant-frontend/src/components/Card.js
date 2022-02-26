@@ -7,7 +7,7 @@ const RestCard = ({ restaurant }) => {
     restaurant;
 
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem", margin: ".5rem" }}>
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Subtitle className="mb-2">
@@ -19,9 +19,11 @@ const RestCard = ({ restaurant }) => {
           1232 likes
         </Card.Subtitle>
         <Card.Text>{address}</Card.Text>
-        <Button variant="danger" size="sm">
-          View More
-        </Button>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button variant="danger" size="sm">
+            View More
+          </Button>
+        </div>
       </Card.Body>
     </Card>
   );

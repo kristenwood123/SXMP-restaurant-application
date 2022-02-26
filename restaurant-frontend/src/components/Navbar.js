@@ -1,21 +1,15 @@
 import React from "react";
-import { Navbar, Container, Form, FormControl } from "react-bootstrap";
-import { BsSearch } from "react-icons/bs";
-
+import { Navbar, Container, Form } from "react-bootstrap";
+import { RiAddFill } from "react-icons/ri";
 const NavbarComponent = () => {
   return (
     <Navbar expand="lg" variant="light" bg="light">
       <Container>
         <Navbar.Brand href="#">Restaurant & Food Truck App</Navbar.Brand>
         <Form className="d-flex">
-          {/* <FormControl
-            type="search"
-            placeholder="Search"
-            className="me-2"
-            aria-label="Search"
-          >
-            
-          </FormControl> */}
+          <RiAddFill
+            styles={{ fill: "red", fontSize: "1rem", background: "red" }}
+          />
         </Form>
       </Container>
     </Navbar>
