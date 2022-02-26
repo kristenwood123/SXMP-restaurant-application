@@ -36,6 +36,7 @@ const AppProvider = ({ children }) => {
         newRestaurant,
         setNewRestaurant,
         currentPage,
+        setLoading,
         setCurrentPage,
       }}
     >

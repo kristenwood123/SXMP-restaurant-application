@@ -1,18 +1,81 @@
 import React from "react";
 import styles from "styled-components";
+import { Dropdown } from "react-bootstrap";
+import { useGlobalContext } from "../contexts/context";
+import axios from "axios";
 
 const SortButton = () => {
+  const { currentPage, setLoading, setRestaurants } = useGlobalContext();
+
+  const sortByNameASC = () => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const result = await axios.get(
+        `http://localhost:8080/restaurants/sort?page=${currentPage}&order=true&type=name`
+      );
+      setRestaurants(result.data);
+      setLoading(false);
+    };
+    fetchPosts();
+  };
+
+  const sortByNameDESC = () => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const result = await axios.get(
+        `http://localhost:8080/restaurants/sort?page=${currentPage}&order=false&type=name`
+      );
+      setRestaurants(result.data);
+      setLoading(false);
+    };
+    fetchPosts();
+  };
+
+  const sortByAddressASC = () => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const result = await axios.get(
+        `http://localhost:8080/restaurants/sort?page=${currentPage}&order=true&type=address`
+      );
+      setRestaurants(result.data);
+      setLoading(false);
+    };
+    fetchPosts();
+  };
+
+  const sortByAddressDESC = () => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const result = await axios.get(
+        `http://localhost:8080/restaurants/sort?page=${currentPage}&order=false&type=address`
+      );
+      setRestaurants(result.data);
+      setLoading(false);
+    };
+    fetchPosts();
+  };
   return (
     <Container>
-      <div className="dropdown">
-        <button>Sort by: Featured</button>
-        <div className="dropdown-content">
-          <a href="#">Name: A - Z</a>
-          <a href="#">Name: Z - A</a>
-          <a href="#">Address: A - Z</a>
-          <a href="#">Address: Z - A</a>
-        </div>
-      </div>
+      <Dropdown>
+        <Dropdown.Toggle variant="danger" id="dropdown-basic">
+          Sort by: Featured
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item href="#/action-1" onClick={sortByNameASC}>
+            Name: A - Z
+          </Dropdown.Item>
+          <Dropdown.Item href="#/action-2" onClick={sortByNameDESC}>
+            Name: Z - A
+          </Dropdown.Item>
+          <Dropdown.Item href="#/action-3" onClick={sortByAddressASC}>
+            Address: A - Z
+          </Dropdown.Item>
+          <Dropdown.Item href="#/action-3" onClick={sortByAddressDESC}>
+            Address: Z - A
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     </Container>
   );
 };
