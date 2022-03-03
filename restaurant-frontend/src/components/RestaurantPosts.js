@@ -1,8 +1,6 @@
 import React from "react";
-// import { Container } from "react-bootstrap";
 import { useGlobalContext } from "../contexts/context";
-import RestCard from "./Card";
-// import { Row, Col } from "react-bootstrap";
+import RestaurantCard from "./RestaurantCard";
 import styles from "styled-components";
 
 const RestaurantPosts = () => {
@@ -11,7 +9,7 @@ const RestaurantPosts = () => {
   return (
     <Container>
       {restaurants.map((restaurant) => {
-        return <RestCard key={restaurant.id} restaurant={restaurant} />;
+        return <RestaurantCard key={restaurant.id} restaurant={restaurant} />;
       })}
     </Container>
   );

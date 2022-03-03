@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class RestaurantServiceImplementation implements RestaurantService {
@@ -24,7 +25,6 @@ public class RestaurantServiceImplementation implements RestaurantService {
 
     @Override
     public Restaurant saveRestaurant(Restaurant restaurant) {
-
         return restaurantRepository.save(restaurant);
     }
 
@@ -38,13 +38,8 @@ public class RestaurantServiceImplementation implements RestaurantService {
         this.sortedRestaurantsByAddress = new ArrayList<>(this.allRestaurants);
         Collections.sort(this.sortedRestaurantsByName, new RestaurantsByNameComparator());
         Collections.sort(this.sortedRestaurantsByAddress, new RestarauntsByAddressComparator());
-
-
-
         return this.allRestaurants;
     }
-
-
 
     @Override
     public List<Restaurant> getRestaurantsByPage(int page) {
@@ -69,6 +64,20 @@ public class RestaurantServiceImplementation implements RestaurantService {
         }
         return result;
     }
+
+    @Override
+    public List<Restaurant> queryRestaurantsByType(String query, String type) {
+        List<Restaurant> result = null;
+        query = query.toLowerCase();
+        if(type.equals("address")) {
+            result = restaurantRepository.findRestaurantsByAddress(query);
+        } else {
+            result = restaurantRepository.findRestaurantsByFoodType(query);
+        }
+            return result;
+    }
+
+
 
     private List<Restaurant> getSortedListAscending(int page, List<Restaurant> restaurantList) {
         List<Restaurant> result = new ArrayList<>();

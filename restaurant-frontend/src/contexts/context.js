@@ -7,6 +7,7 @@ const AppProvider = ({ children }) => {
   // State
   const [restaurants, setRestaurants] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [sorted, setSorted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [newRestaurant, setNewRestaurant] = useState({
     name: "",
@@ -15,13 +16,22 @@ const AppProvider = ({ children }) => {
     food_type: "",
     likes: false,
   });
+  const [order, setOrder] = useState("");
+  const [type, setType] = useState("");
+
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const result = await axios.get(
-        `http://localhost:8080/restaurants/getRestaurants?num=${currentPage}`
-        // `http://localhost:8080/restaurants/getAllRestaurants`
-      );
+      let result;
+      if (sorted) {
+        result = await axios.get(
+          `http://localhost:8080/restaurants/sort?page=${currentPage}&order=${order}&type=${type}`
+        );
+      } else {
+        result = await axios.get(
+          `http://localhost:8080/restaurants/getRestaurants?num=${currentPage}`
+        );
+      }
       setRestaurants(result.data);
       setLoading(false);
     };
@@ -38,6 +48,9 @@ const AppProvider = ({ children }) => {
         currentPage,
         setLoading,
         setCurrentPage,
+        setSorted,
+        setType,
+        setOrder,
       }}
     >
       {children}

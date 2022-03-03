@@ -5,11 +5,29 @@ import { useGlobalContext } from "../contexts/context";
 import axios from "axios";
 
 const SortButton = () => {
-  const { currentPage, setLoading, setRestaurants } = useGlobalContext();
+  const {
+    currentPage,
+    setLoading,
+    setRestaurants,
+    setSorted,
+    setType,
+    setCurrentPage,
+    setOrder,
+  } = useGlobalContext();
+
+  const resetRestaurants = () => {
+    setSorted(false);
+    setCurrentPage(1);
+    setLoading(false);
+  };
 
   const sortByNameASC = () => {
     const fetchPosts = async () => {
       setLoading(true);
+      setSorted(true);
+      setType("name");
+      setOrder(true);
+      setCurrentPage(1);
       const result = await axios.get(
         `http://localhost:8080/restaurants/sort?page=${currentPage}&order=true&type=name`
       );
@@ -22,6 +40,10 @@ const SortButton = () => {
   const sortByNameDESC = () => {
     const fetchPosts = async () => {
       setLoading(true);
+      setSorted(true);
+      setType("name");
+      setOrder(false);
+      setCurrentPage(1);
       const result = await axios.get(
         `http://localhost:8080/restaurants/sort?page=${currentPage}&order=false&type=name`
       );
@@ -34,6 +56,10 @@ const SortButton = () => {
   const sortByAddressASC = () => {
     const fetchPosts = async () => {
       setLoading(true);
+      setSorted(true);
+      setType("address");
+      setOrder(true);
+      setCurrentPage(1);
       const result = await axios.get(
         `http://localhost:8080/restaurants/sort?page=${currentPage}&order=true&type=address`
       );
@@ -46,6 +72,11 @@ const SortButton = () => {
   const sortByAddressDESC = () => {
     const fetchPosts = async () => {
       setLoading(true);
+      setSorted(true);
+      setType("address");
+      setOrder(false);
+      setCurrentPage(1);
+
       const result = await axios.get(
         `http://localhost:8080/restaurants/sort?page=${currentPage}&order=false&type=address`
       );
@@ -74,6 +105,9 @@ const SortButton = () => {
           <Dropdown.Item href="#/action-3" onClick={sortByAddressDESC}>
             Address: Z - A
           </Dropdown.Item>
+          <Dropdown.Item href="#/action-4" onClick={resetRestaurants}>
+            Reset
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </Container>
@@ -96,6 +130,4 @@ const Container = styles.div`
     cursor: pointer;
     border-radius: 6px;
   }
-
-
 `;

@@ -1,7 +1,5 @@
 package com.kristenwoodward.model.persistence;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 
 @Entity
@@ -112,3 +110,4 @@ public class Restaurant {
         Location = location;
     }
 }
+

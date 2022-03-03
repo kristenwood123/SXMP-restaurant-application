@@ -6,7 +6,6 @@ import com.kristenwoodward.repository.RestaurantRepository;
 import com.kristenwoodward.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -56,6 +55,13 @@ public class RestaurantController {
         return restaurantService.getSortedRestaurants(page, order, type);
     }
 
-
+//********************
+    @GetMapping(value = "/query")
+    public List<Restaurant> queryRestaurantsByType(
+            @RequestParam(value = "query", required = false) String query,
+            @RequestParam(value = "type", required = false) String type
+    ) {
+        restaurantService.getAllRestaurants();
+        return restaurantService.queryRestaurantsByType(query, type);
+    }
 }
-
