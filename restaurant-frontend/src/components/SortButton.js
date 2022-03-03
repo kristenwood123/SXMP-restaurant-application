@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "styled-components";
-import { Dropdown } from "react-bootstrap";
+import { IoMdArrowDropdown } from "react-icons/io";
 import { useGlobalContext } from "../contexts/context";
 import axios from "axios";
 
 const SortButton = () => {
+  const [isActive, setIsActive] = useState(false);
+  const [selected, setSelected] = useState("");
+  const options = [
+    "Name: A - Z",
+    "Name: Z - A",
+    "Address: A - Z",
+    "Address: Z - A",
+  ];
+  const NAMEASC = "Name: A - Z";
+
   const {
     currentPage,
     setLoading,
@@ -21,95 +31,88 @@ const SortButton = () => {
     setLoading(false);
   };
 
-  const sortByNameASC = () => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      setSorted(true);
-      setType("name");
-      setOrder(true);
-      setCurrentPage(1);
-      const result = await axios.get(
-        `http://localhost:8080/restaurants/sort?page=${currentPage}&order=true&type=name`
-      );
-      setRestaurants(result.data);
-      setLoading(false);
-    };
-    fetchPosts();
+  const sortBy = (option) => {
+    setSelected(option);
+    console.log(option);
+    if (option === "Name: A - Z") {
+      console.log("hello");
+      const fetchPosts = async () => {
+        setLoading(true);
+        setSorted(true);
+        setType("name");
+        setOrder(true);
+        setCurrentPage(1);
+        const result = await axios.get(
+          `http://localhost:8080/restaurants/sort?page=${currentPage}&order=true&type=name`
+        );
+        setRestaurants(result.data);
+        setLoading(false);
+      };
+      fetchPosts();
+    } else if (option === "Name: Z - A") {
+      console.log("hi");
+      const fetchPosts = async () => {
+        setLoading(true);
+        setSorted(true);
+        setType("name");
+        setOrder(false);
+        setCurrentPage(1);
+        const result = await axios.get(
+          `http://localhost:8080/restaurants/sort?page=${currentPage}&order=false&type=name`
+        );
+        console.log(result);
+        setRestaurants(result.data);
+        setLoading(false);
+      };
+      fetchPosts();
+    } else if (option === "Address: A - Z") {
+      const fetchPosts = async () => {
+        setLoading(true);
+        setSorted(true);
+        setType("address");
+        setOrder(true);
+        setCurrentPage(1);
+        const result = await axios.get(
+          `http://localhost:8080/restaurants/sort?page=${currentPage}&order=true&type=address`
+        );
+        setRestaurants(result.data);
+        setLoading(false);
+      };
+      fetchPosts();
+    } else if (option === "Address: Z - A") {
+      const fetchPosts = async () => {
+        setLoading(true);
+        setSorted(true);
+        setType("address");
+        setOrder(false);
+        setCurrentPage(1);
+        const result = await axios.get(
+          `http://localhost:8080/restaurants/sort?page=${currentPage}&order=false&type=address`
+        );
+        setRestaurants(result.data);
+        setLoading(false);
+      };
+      fetchPosts();
+    }
   };
 
-  const sortByNameDESC = () => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      setSorted(true);
-      setType("name");
-      setOrder(false);
-      setCurrentPage(1);
-      const result = await axios.get(
-        `http://localhost:8080/restaurants/sort?page=${currentPage}&order=false&type=name`
-      );
-      setRestaurants(result.data);
-      setLoading(false);
-    };
-    fetchPosts();
-  };
-
-  const sortByAddressASC = () => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      setSorted(true);
-      setType("address");
-      setOrder(true);
-      setCurrentPage(1);
-      const result = await axios.get(
-        `http://localhost:8080/restaurants/sort?page=${currentPage}&order=true&type=address`
-      );
-      setRestaurants(result.data);
-      setLoading(false);
-    };
-    fetchPosts();
-  };
-
-  const sortByAddressDESC = () => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      setSorted(true);
-      setType("address");
-      setOrder(false);
-      setCurrentPage(1);
-
-      const result = await axios.get(
-        `http://localhost:8080/restaurants/sort?page=${currentPage}&order=false&type=address`
-      );
-      setRestaurants(result.data);
-      setLoading(false);
-    };
-    fetchPosts();
-  };
   return (
     <Container>
-      <Dropdown>
-        <Dropdown.Toggle variant="danger" id="dropdown-basic">
-          Sort by: Featured
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1" onClick={sortByNameASC}>
-            Name: A - Z
-          </Dropdown.Item>
-          <Dropdown.Item href="#/action-2" onClick={sortByNameDESC}>
-            Name: Z - A
-          </Dropdown.Item>
-          <Dropdown.Item href="#/action-3" onClick={sortByAddressASC}>
-            Address: A - Z
-          </Dropdown.Item>
-          <Dropdown.Item href="#/action-3" onClick={sortByAddressDESC}>
-            Address: Z - A
-          </Dropdown.Item>
-          <Dropdown.Item href="#/action-4" onClick={resetRestaurants}>
-            Reset
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      <div className="dropdown">
+        <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
+          {selected}
+          <IoMdArrowDropdown className="drop-icon" />
+        </div>
+        {isActive && (
+          <div className="dropdown-content">
+            {options.map((option) => (
+              <div className="item" onClick={(e) => sortBy(option)}>
+                {option}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </Container>
   );
 };
@@ -117,17 +120,48 @@ const SortButton = () => {
 export default SortButton;
 
 const Container = styles.div`
+  display: flex;
+ 
   .dropdown {
     position: relative;
     display: inline-block;
-  }
-  button {
-    background-color: red;
+    width: 180px;
+    margin: 0 auto;
+
+  .dropdown-btn {
+    padding: 10px;
+    background: red;
     color: white;
-    padding: 14px;
-    font-size: 16px;
-    border: none;
     cursor: pointer;
-    border-radius: 6px;
+    box-shadow: 3px 3px 10px 6px rgba(0,0,0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+    .dropdown-content {
+      position: absolute;
+      top: 110%;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      padding: 10px;
+      box-shadow: 3px 3px 10px 6px rgba(0,0,0, 0.06);
+      z-index: 1;
+
+      .item {
+        cursor: pointer;
+        padding: 10px;
+        transition: all 0.2s 
+      }
+
+      .item: hover {
+        background: #fcfcfc;
+      }
+    }
+  }
+
+  .drop-icon {
+    margin-left: 5px;
+    font-size: 20px;
   }
 `;

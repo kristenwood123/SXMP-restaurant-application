@@ -8,7 +8,7 @@ const Hero = () => {
       <img src={restaurantImg} alt="" />
       <div className="hero-search">
         <h1>Find your favorite foods</h1>
-        <input type="text" placeholder="Search by Restaurant or Location" />
+        <input type="text" placeholder="Address or Cuisine" />
         <button className="search-btn">Search</button>
       </div>
     </Container>
