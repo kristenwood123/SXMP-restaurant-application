@@ -13,7 +13,6 @@ const SortButton = () => {
     "Address: A - Z",
     "Address: Z - A",
   ];
-  const NAMEASC = "Name: A - Z";
 
   const {
     currentPage,
@@ -25,6 +24,8 @@ const SortButton = () => {
     setOrder,
   } = useGlobalContext();
 
+  /******************************** */
+
   const resetRestaurants = () => {
     setSorted(false);
     setCurrentPage(1);
@@ -33,9 +34,9 @@ const SortButton = () => {
 
   const sortBy = (option) => {
     setSelected(option);
-    console.log(option);
+    setIsActive(false);
+
     if (option === "Name: A - Z") {
-      console.log("hello");
       const fetchPosts = async () => {
         setLoading(true);
         setSorted(true);
@@ -50,7 +51,6 @@ const SortButton = () => {
       };
       fetchPosts();
     } else if (option === "Name: Z - A") {
-      console.log("hi");
       const fetchPosts = async () => {
         setLoading(true);
         setSorted(true);
@@ -60,7 +60,7 @@ const SortButton = () => {
         const result = await axios.get(
           `http://localhost:8080/restaurants/sort?page=${currentPage}&order=false&type=name`
         );
-        console.log(result);
+
         setRestaurants(result.data);
         setLoading(false);
       };
@@ -121,47 +121,47 @@ export default SortButton;
 
 const Container = styles.div`
   display: flex;
- 
-  .dropdown {
-    position: relative;
-    display: inline-block;
-    width: 180px;
-    margin: 0 auto;
+  margin-top: 20px;
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      width: 180px;
+      margin: 0 auto;
 
-  .dropdown-btn {
-    padding: 10px;
-    background: red;
-    color: white;
-    cursor: pointer;
-    box-shadow: 3px 3px 10px 6px rgba(0,0,0, 0.06);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-    .dropdown-content {
-      position: absolute;
-      top: 110%;
-      left: 0;
-      width: 100%;
-      background: #fff;
+    .dropdown-btn {
       padding: 10px;
+      background: red;
+      color: white;
+      cursor: pointer;
       box-shadow: 3px 3px 10px 6px rgba(0,0,0, 0.06);
-      z-index: 1;
-
-      .item {
-        cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+      .dropdown-content {
+        position: absolute;
+        top: 110%;
+        left: 0;
+        width: 100%;
+        background: #fff;
         padding: 10px;
-        transition: all 0.2s 
-      }
+        box-shadow: 3px 3px 10px 6px rgba(0,0,0, 0.06);
+        z-index: 1;
 
-      .item: hover {
-        background: #fcfcfc;
+        .item {
+          cursor: pointer;
+          padding: 10px;
+          transition: all 0.2s 
+        }
+
+        .item: hover {
+          background: #fcfcfc;
+        }
       }
     }
-  }
 
-  .drop-icon {
-    margin-left: 5px;
-    font-size: 20px;
-  }
+    .drop-icon {
+      margin-left: 5px;
+      font-size: 20px;
+    }
 `;

@@ -1,6 +1,7 @@
 import React from "react";
 import restaurantImg from "../images/restaurantimage.jpg";
 import styles from "styled-components";
+import SearchForm from "./SearchForm";
 
 const Hero = () => {
   return (
@@ -8,8 +9,7 @@ const Hero = () => {
       <img src={restaurantImg} alt="" />
       <div className="hero-search">
         <h1>Find your favorite foods</h1>
-        <input type="text" placeholder="Address or Cuisine" />
-        <button className="search-btn">Search</button>
+        <SearchForm />
       </div>
     </Container>
   );
@@ -44,7 +44,7 @@ position: relative;
     color: white;
     height: 50px;
     border-radius: 6px;
-    width: 80px;
+    width: 90px;
   }
 }
 img {
