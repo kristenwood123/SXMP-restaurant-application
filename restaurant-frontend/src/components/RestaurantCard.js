@@ -5,7 +5,7 @@ import DetailsModal from "./DetailsModal";
 
 const RestaurantCard = ({ restaurant }) => {
   const [modalShow, setModalShow] = useState(false);
-  const { name, address } = restaurant;
+  const { name, address, likes } = restaurant;
 
   return (
     <Card style={{ width: "18rem", margin: ".5rem", cursor: "pointer" }}>
@@ -17,7 +17,7 @@ const RestaurantCard = ({ restaurant }) => {
             fontSize="20px"
             style={{ marginRight: "1rem" }}
           ></FaRegHeart>
-          1232 likes
+          {likes} likes
         </Card.Subtitle>
         <Card.Text>{address}</Card.Text>
         <div style={{ display: "flex", justifyContent: "center" }}>

@@ -14,26 +14,29 @@ public class Restaurant {
     @Column(name= "name", nullable = false, unique = true)
     private String Name;
 
-    @Column
+    @Column(name = "location_description")
     private String LocationDescription;
 
-    @Column
+    @Column(name = "address")
     private String Address;
 
     @Column(name="food_items")
     private String FoodItems;
 
-    @Column
+    @Column(name = "latitude")
     private String Latitude;
 
-    @Column
+    @Column(name = "longitude")
     private String Longitude;
 
-    @Column
+    @Column(name = "schedule")
     private String Schedule;
 
-    @Column
+    @Column(name = "location")
     private String Location;
+
+    @Column(name = "likes")
+    private Long Likes;
 
     public Restaurant() {
     }
@@ -108,6 +111,11 @@ public class Restaurant {
 
     public void setLocation(String location) {
         Location = location;
+    }
+
+    public Long getLikes() { return Likes; }
+    public void setLikes(Long likes) {
+        Likes = likes;
     }
 }
 

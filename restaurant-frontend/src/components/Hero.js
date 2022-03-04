@@ -38,14 +38,6 @@ position: relative;
     border: none;
   }
 
-  .search-btn {
-    border: none;
-    background: red;
-    color: white;
-    height: 50px;
-    border-radius: 6px;
-    width: 90px;
-  }
 }
 img {
   width: 100%;

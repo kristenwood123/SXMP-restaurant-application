@@ -1,5 +1,4 @@
 package com.kristenwoodward.controller;
-
 import com.kristenwoodward.model.persistence.Restaurant;
 import com.kristenwoodward.model.requests.RestaurantRequest;
 import com.kristenwoodward.repository.RestaurantRepository;
@@ -31,6 +30,7 @@ public class RestaurantController {
         restaurant.setLongitude(restaurantRequest.getLongitude());
         restaurant.setSchedule(restaurantRequest.getSchedule());
         restaurant.setLocation(restaurantRequest.getLocation());
+        restaurant.setLikes(restaurantRequest.getLikes());
 
         restaurantService.saveRestaurant(restaurant);
         return "Restaurant is added";
@@ -55,7 +55,6 @@ public class RestaurantController {
         return restaurantService.getSortedRestaurants(page, order, type);
     }
 
-//********************
     @GetMapping(value = "/query")
     public List<Restaurant> queryRestaurantsByType(
             @RequestParam(value = "query", required = false) String query,

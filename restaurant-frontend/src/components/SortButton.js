@@ -8,6 +8,7 @@ const SortButton = () => {
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState("");
   const options = [
+    "Sort by: Featured",
     "Name: A - Z",
     "Name: Z - A",
     "Address: A - Z",
@@ -95,12 +96,13 @@ const SortButton = () => {
       fetchPosts();
     }
   };
-
+  console.log(isActive);
   return (
     <Container>
       <div className="dropdown">
         <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
           {selected}
+
           <IoMdArrowDropdown className="drop-icon" />
         </div>
         {isActive && (

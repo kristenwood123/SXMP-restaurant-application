@@ -32,4 +32,6 @@ public class RestaurantRequest {
     @JsonProperty
     private String Location;
 
+    @JsonProperty
+    private Long Likes;
 }
