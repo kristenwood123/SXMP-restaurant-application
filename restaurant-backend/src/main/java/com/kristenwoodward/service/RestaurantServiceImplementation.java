@@ -5,6 +5,8 @@ import com.kristenwoodward.model.persistence.Restaurant;
 import com.kristenwoodward.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +32,7 @@ public class RestaurantServiceImplementation implements RestaurantService {
         if (!this.allRestaurants.isEmpty()) {
             return this.allRestaurants;
         }
-        this.allRestaurants = restaurantRepository.findAll();
+        this.allRestaurants = (List<Restaurant>) restaurantRepository.findAll();
         this.sortedRestaurantsByName = new ArrayList<>(this.allRestaurants);
         this.sortedRestaurantsByAddress = new ArrayList<>(this.allRestaurants);
         Collections.sort(this.sortedRestaurantsByName, new RestaurantsByNameComparator());
@@ -75,6 +77,7 @@ public class RestaurantServiceImplementation implements RestaurantService {
     }
 
     @Override
+    @Transactional
     public void updateLikeDislike(Long id, boolean isLiked) {
         if(isLiked) {
             restaurantRepository.updateLikes(id);

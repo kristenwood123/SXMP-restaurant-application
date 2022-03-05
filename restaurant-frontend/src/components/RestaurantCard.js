@@ -1,27 +1,43 @@
 import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 import DetailsModal from "./DetailsModal";
 
 const RestaurantCard = ({ restaurant }) => {
   const [modalShow, setModalShow] = useState(false);
-  const { name, address, likes } = restaurant;
+  const { name, address, likes, dislikes } = restaurant;
 
   return (
     <Card style={{ width: "18rem", margin: ".5rem", cursor: "pointer" }}>
       <Card.Body>
-        <Card.Title>{name}</Card.Title>
+        <Card.Title style={{ paddingBottom: "1rem" }}>{name}</Card.Title>
         <Card.Subtitle className="mb-2">
-          <FaRegHeart
+          <FaRegThumbsUp
             fill="red"
             fontSize="20px"
-            style={{ marginRight: "1rem" }}
-          ></FaRegHeart>
+            style={{ marginRight: ".5rem" }}
+          ></FaRegThumbsUp>
           {likes} likes
+          <FaRegThumbsDown
+            fill="red"
+            fontSize="20px"
+            style={{ marginLeft: "1rem", marginRight: "2px" }}
+          />
+          {dislikes} dislikes
         </Card.Subtitle>
         <Card.Text>{address}</Card.Text>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button variant="danger" size="sm" onClick={() => setModalShow(true)}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            position: "relative",
+          }}
+        >
+          <Button
+            style={{ backgroundColor: "red", border: "none" }}
+            size="sm"
+            onClick={() => setModalShow(true)}
+          >
             View More
           </Button>
           <DetailsModal show={modalShow} onHide={() => setModalShow(false)} />

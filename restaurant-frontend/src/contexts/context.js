@@ -14,7 +14,8 @@ const AppProvider = ({ children }) => {
     description: "",
     address: "",
     food_type: "",
-    likes: false,
+    likes: 0,
+    dislikes: 0,
   });
   const [order, setOrder] = useState("");
   const [type, setType] = useState("");
