@@ -10,10 +10,9 @@ const SearchForm = () => {
   const [type, setType] = useState("");
   const [isActive, setIsActive] = useState(true);
   const [selected, setSelected] = useState("");
-  const options = ["address", "food_items"];
+  const options = ["address", "cuisine"];
 
   const sortBy = (option) => {
-    console.log(option);
     const fetchPosts = async () => {
       setLoading(true);
       let result = await axios.get(

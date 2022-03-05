@@ -5,7 +5,7 @@ import DetailsModal from "./DetailsModal";
 
 const RestaurantCard = ({ restaurant }) => {
   const [modalShow, setModalShow] = useState(false);
-  const { name, address, likes, dislikes } = restaurant;
+  const { name, address, likes, dislikes, foodItems } = restaurant;
 
   return (
     <Card
@@ -16,13 +16,19 @@ const RestaurantCard = ({ restaurant }) => {
       }}
     >
       <Card.Body>
-        <Card.Title style={{ paddingBottom: "1rem" }}>{name}</Card.Title>
+        <Card.Title>{name}</Card.Title>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
           }}
         >
+          <Card.Text
+            className="pb-5"
+            style={{ color: "gray", fontSize: "12px" }}
+          >
+            {foodItems}
+          </Card.Text>
           <Card.Subtitle className="mb-2">
             <FaRegThumbsUp
               fill="red"
