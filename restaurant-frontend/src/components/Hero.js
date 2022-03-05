@@ -32,12 +32,11 @@ position: relative;
   text-align: center;
 
   input {
-    width: 70%;
     height: 50px;
-    border-radius: 6px;
+    border-radius: 6px 0 0 6px;
     border: none;
+    width: 300px;
   }
-
 }
 img {
   width: 100%;

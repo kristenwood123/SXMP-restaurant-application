@@ -91,13 +91,14 @@ const Container = styles.div`
     .search-btn {
       padding: 10px;
       cursor: pointer;
+      background-color: red;
       box-shadow: 3px 3px 10px 6px rgba(0,0,0, 0.06);
       display: flex;
       align-items: center;
       justify-content: space-between;
       color: white;
       height: 50px;
-      border-radius: 6px;
+      border-radius: 0px 6px 6px 0;
       width: 120px;
     }
 
