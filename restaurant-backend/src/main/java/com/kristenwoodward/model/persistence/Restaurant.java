@@ -38,6 +38,9 @@ public class Restaurant {
     @Column(name = "likes")
     private Long Likes;
 
+    @Column(name = "dislikes")
+    private Long Dislikes;
+
     public Restaurant() {
     }
 
@@ -114,8 +117,15 @@ public class Restaurant {
     }
 
     public Long getLikes() { return Likes; }
+
     public void setLikes(Long likes) {
         Likes = likes;
+    }
+
+    public Long getDislikes() { return Dislikes; }
+
+    public void setDislikes(Long dislikes) {
+        Dislikes = dislikes;
     }
 }
 

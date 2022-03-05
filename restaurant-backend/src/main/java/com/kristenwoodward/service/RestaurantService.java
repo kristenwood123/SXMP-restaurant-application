@@ -15,4 +15,6 @@ public interface RestaurantService {
   public List<Restaurant> getSortedRestaurants(int page, boolean order, String type);
 
   public List<Restaurant> queryRestaurantsByType(String query, String type);
+
+  void updateLikeDislike(Long id, boolean isLiked);
 }

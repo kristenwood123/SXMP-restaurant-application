@@ -74,6 +74,14 @@ public class RestaurantServiceImplementation implements RestaurantService {
             return result;
     }
 
+    @Override
+    public void updateLikeDislike(Long id, boolean isLiked) {
+        if(isLiked) {
+            restaurantRepository.updateLikes(id);
+        } else {
+            restaurantRepository.updateDisLikes(id);
+        }
+    }
 
 
     private List<Restaurant> getSortedListAscending(int page, List<Restaurant> restaurantList) {
@@ -91,6 +99,5 @@ public class RestaurantServiceImplementation implements RestaurantService {
         }
         return result;
     }
-
 
 }
