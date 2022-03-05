@@ -8,38 +8,54 @@ const RestaurantCard = ({ restaurant }) => {
   const { name, address, likes, dislikes } = restaurant;
 
   return (
-    <Card style={{ width: "18rem", margin: ".5rem", cursor: "pointer" }}>
+    <Card
+      style={{
+        width: "18rem",
+        margin: ".5rem",
+        cursor: "pointer",
+      }}
+    >
       <Card.Body>
         <Card.Title style={{ paddingBottom: "1rem" }}>{name}</Card.Title>
-        <Card.Subtitle className="mb-2">
-          <FaRegThumbsUp
-            fill="red"
-            fontSize="20px"
-            style={{ marginRight: ".5rem" }}
-          ></FaRegThumbsUp>
-          {likes} likes
-          <FaRegThumbsDown
-            fill="red"
-            fontSize="20px"
-            style={{ marginLeft: "1rem", marginRight: "2px" }}
-          />
-          {dislikes} dislikes
-        </Card.Subtitle>
-        <Card.Text>{address}</Card.Text>
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
-            position: "relative",
+            flexDirection: "column",
           }}
         >
-          <Button
-            style={{ backgroundColor: "red", border: "none" }}
-            size="sm"
-            onClick={() => setModalShow(true)}
+          <Card.Subtitle className="mb-2">
+            <FaRegThumbsUp
+              fill="red"
+              fontSize="20px"
+              style={{ marginRight: ".5rem" }}
+            ></FaRegThumbsUp>
+            {likes} likes
+            <FaRegThumbsDown
+              fill="red"
+              fontSize="20px"
+              style={{ marginLeft: "1rem", marginRight: "2px" }}
+            />
+            {dislikes} dislikes
+          </Card.Subtitle>
+          <Card.Text>{address}</Card.Text>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
-            View More
-          </Button>
+            <Button
+              style={{
+                backgroundColor: "red",
+                border: "none",
+                display: "flex",
+              }}
+              size="sm"
+              onClick={() => setModalShow(true)}
+            >
+              View More
+            </Button>
+          </div>
           <DetailsModal show={modalShow} onHide={() => setModalShow(false)} />
         </div>
       </Card.Body>
