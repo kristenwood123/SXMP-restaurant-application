@@ -26,12 +26,6 @@ const SortButton = () => {
 
   /******************************** */
 
-  const resetRestaurants = () => {
-    setSorted(false);
-    setCurrentPage(1);
-    setLoading(false);
-  };
-
   const sortBy = (option) => {
     setSelected(option);
     setIsActive(false);
@@ -88,6 +82,20 @@ const SortButton = () => {
         setCurrentPage(1);
         const result = await axios.get(
           `http://localhost:8080/restaurants/sort?page=${currentPage}&order=false&type=address`
+        );
+        setRestaurants(result.data);
+        setLoading(false);
+      };
+      fetchPosts();
+    } else if (option === "Sort by: Featured") {
+      const fetchPosts = async () => {
+        setSorted(false);
+        setCurrentPage(1);
+        setLoading(false);
+        setOrder(false);
+        setCurrentPage(1);
+        const result = await axios.get(
+          `http://localhost:8080/restaurants/sort?page=${currentPage}`
         );
         setRestaurants(result.data);
         setLoading(false);
