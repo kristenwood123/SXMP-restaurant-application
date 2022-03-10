@@ -24,8 +24,8 @@ const RestaurantCard = ({ restaurant }) => {
           }}
         >
           <Card.Text
-            className="pb-5"
-            style={{ color: "gray", fontSize: "12px" }}
+            className="pb-4"
+            style={{ color: "gray", fontSize: "14px" }}
           >
             {foodItems}
           </Card.Text>

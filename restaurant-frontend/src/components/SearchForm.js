@@ -7,12 +7,15 @@ import { useGlobalContext } from "../contexts/context";
 const SearchForm = () => {
   const { setRestaurants, setLoading } = useGlobalContext();
   const [searchTerm, setSearchTerm] = useState("");
+  const [isActive, setIsActive] = useState(false);
   const [type, setType] = useState("");
-  const [isActive, setIsActive] = useState(true);
   const [selected, setSelected] = useState("");
-  const options = ["address", "cuisine"];
+  const options = [
+    { label: "address", value: "address" },
+    { label: "cuisine", value: "cuisine" },
+  ];
 
-  const sortBy = (option) => {
+  const searchBy = (option) => {
     const fetchPosts = async () => {
       setLoading(true);
       let result = await axios.get(
@@ -24,6 +27,9 @@ const SearchForm = () => {
     fetchPosts();
   };
 
+  const switchItem = () => {};
+
+  ///STILL FIX SEARCH BY ADDRESS OR CUISINE
   return (
     <Container>
       <div className="field">
@@ -32,14 +38,22 @@ const SearchForm = () => {
           placeholder="Address or Cuisine"
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <div className="search-btn" onClick={(e) => setIsActive(!isActive)}>
+        <div className="search-btn" onClick={(e) => searchBy}>
           Search
+        </div>
+        <div className="search-content">
+          <div className="item" onClick={switchItem(true)}>
+            By Cuisine
+          </div>
+          <div className="item" onClick={switchItem(false)}>
+            By Address
+          </div>
           <IoMdArrowDropdown className="drop-icon" />
         </div>
         {isActive && (
           <div className="search-content">
             {options.map((option) => (
-              <div className="item" onClick={(e) => sortBy(option)}>
+              <div className="item" onClick={(e) => searchBy(option)}>
                 {option}
               </div>
             ))}
