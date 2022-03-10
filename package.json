@@ -16,7 +16,8 @@
     "react-select": "^3.1.0",
     "styled-components": "^5.3.3",
     "uuid": "^8.3.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "node": "v14.17.5"
   },
   "scripts": {
     "start": "react-scripts start",
